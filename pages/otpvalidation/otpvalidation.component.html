@@ -1,0 +1,31 @@
+<div class="Otp-Container d-flex justify-content-center align-items-center">
+  <!-- Utilisation de d-flex pour activer flexbox -->
+  <div>
+    <!-- Contenu centré verticalement et horizontalement -->
+    <h2>An OTP Code Has Been Sent to Your Number</h2>
+    <form (ngSubmit)="onConfirmOtp()" class="text-center">
+      <!-- Ajout de la classe text-center pour centrer le contenu du formulaire -->
+      <div class="form-group">
+        <label>Enter OTP Code</label>
+        <input
+          type="password"
+          id="otp"
+          name="otp"
+          class="form-control"
+          [(ngModel)]="otp"
+          required
+        />
+      </div>
+      <div class="timer">
+        Time remaining: {{ minutes }}:{{ seconds | number: '2.0' }}
+      </div>
+      <button type="submit" class="btn btn-danger" [disabled]="!otp">
+        Confirm
+      </button>
+    </form>
+    <div *ngIf="message" class="alert" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">
+      {{ message }}
+    </div>
+  </div>
+</div>
+
